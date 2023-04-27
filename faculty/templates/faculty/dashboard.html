@@ -1,0 +1,51 @@
+{% extends 'faculty/base.html' %}
+{%block content%}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card mb-3">
+					<div class="card-header">Number of Enrolled Students</div>
+					<div class="card-body">
+						<h3>{{ num_students }}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-3">
+					<div class="card-header">Average GPA</div>
+					<div class="card-body">
+						<h3>{{ avg_gpa }}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-3">
+					<div class="card-header">Number of Seniors, Juniors, and Freshmen</div>
+					<div class="card-body">
+						<ul>
+							<li>Seniors: {{ num_seniors }}</li>
+							<li>Juniors: {{ num_juniors }}</li>
+							<li>Freshmen: {{ num_freshmen }}</li>
+							<li>Sophomore: {{ num_sophomore }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card mb-3">
+					<div class="card-header">Number of Courses Offered</div>
+					<div class="card-body">
+						<h3>{{ num_courses }}</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap JS -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+{% endblock %}

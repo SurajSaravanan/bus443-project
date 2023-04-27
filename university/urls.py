@@ -21,16 +21,14 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("home/", views.home, name = 'home'),
-    path("facultyinfo/", views.getfacultyinfo, name = 'facultyinfo'),
-    path("comment/", views.saveComment, name = 'comment'),
-    path("commentpage/", views.commentpage, name = 'commentpage'),
+    path("", views.dashboard, name = 'home'),
+    path("studentinfo/", views.getstudentinfo, name = 'studentinfo'),
+    path("courseinfo/", views.getcourseinfo, name = 'courseinfo'),
     path('login/', LoginView.as_view(template_name = 'faculty/login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('commentinfo/', views.commentformexample, name='commentform'),
-    path('nomination/', views.nominationinfo, name='nomination'),
-    path('saveinfo/', views.savenomination, name='saveinfo'),
-    path('dashboard/', views.chartdata, name='dashboard'),
+    path('enrollment/', views.enrollmentinfo, name='enrollment'),
+    path('saveinfo/', views.saveenrollment, name='saveinfo'),
+    path('dashboard/', views.dashboard, name='dashboard'),
 
 
 ]

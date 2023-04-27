@@ -1,0 +1,50 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+        <div class = "container-fluid bg-primary text-center text-white paddingclass">
+    <h1>Course Info</h1>
+        </div>
+        <div class = "container">
+        <table class = "table table-hover">
+            <thead class = "bg-dark text-white">
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Title</th>
+                    <th>Course Name</th>
+                    <th>Course Section Code</th>
+                    <th>Course Department</th>
+                    <th>Instructor Full Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.course_id }}</td>
+                    <td>{{ row.course_title }}</td>
+                    <td>{{ row.course_name }}</td>
+                    <td>{{ row.course_section_code }}</td>
+                    <td>{{ row.course_department }}</td>
+                    <td>{{ row.instructor_full_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class = "pagination">
+            <span class ="step-links">
+                {% if data.has_previous %}
+                <a href = "?page=1">First</a>
+                <a href = "?page={{data.previous_page_number}}">Previous</a>
+                {% endif %}
+                <span class ="current">
+                    Page {{ data.number }} of {{ data.paginator.num_pages }}
+                </span>
+                {% if data.has_next %}
+                <a href = "?page={{ data.next_page_number }}">Next</a>
+                <a href = "?page={{ data.paginator.num_pages }}">Last</a>
+                {%endif%}
+            </span>
+        </div>
+
+        </div>
+    
+        {% endblock%}

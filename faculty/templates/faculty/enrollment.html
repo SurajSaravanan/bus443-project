@@ -5,18 +5,18 @@
     <br/><br/>
     <div class ="row">
         <div class = "col-md text-center">
-            <select id = "faculty" class = "form-select">
-                <option value = "">Please select a name</option>
-                {%for i in faculty %}
-                <option value = "{{i.facultyname}}">{{i.facultyname}}</option>
+            <select id = "studentid" class = "form-select">
+                <option value = "">Please select a student</option>
+                {%for i in student %}
+                <option value = "{{i.studentid}}">{{i.studentid}}</option>
                 {%endfor%}
             </select>
         </div>
         <div class = "col-md text-center">
-            <select id = "award" class = "form-select">
-                <option value = "">Please select an award</option>
-                {%for i in award %}
-                <option value = "{{i.awardtype}}">{{i.awardtype}}</option>
+            <select id = "course_title" class = "form-select">
+                <option value = "">Please select a course</option>
+                {%for i in course %}
+                <option value = "{{i.course_title}}">{{i.course_title}}</option>
                 {%endfor%}
             </select>
         </div>
@@ -30,19 +30,19 @@
     </div><br/>
 
     <div class = "conatiner text-center">
-        <h4>Existing Nominations</h4>
+        <h4>Existing Enrollments</h4>
         <table class = "table">
             <thead class = "text-center">
                 <tr>
-                    <th>Faculty Name</th>
-                    <th>Award Type</th>
+                    <th>Student</th>
+                    <th>Course</th>
                 </tr>
             </thead>
             <tbody class = "text-center">
-                {%for i in nomination%}
+                {%for i in enrollment%}
                 <tr>
-                    <td>{{i.facultyname}}</td>
-                    <td>{{i.awardtype}}</td>
+                    <td>{{i.studentid}}</td>
+                    <td>{{i.course_title}}</td>
                 </tr>
                 {%endfor%}
             </tbody>
@@ -55,17 +55,14 @@
 <script>
     $('document').ready(function(){
         $('#btnsubmit').click(function(){
-            var fname = $('#faculty').val()
-            var award = $('#award').val()
-            console.log(fname)
-            console.log(award)
-            
+            var sid = $('#studentid').val()
+            var ctitle = $('#course_title').val()
 
             $.ajax({
                 url:"{% url 'saveinfo' %}",
                 data:{
-                    facultyname: fname,
-                    awardtype: award
+                    studentid: sid,
+                    course_title: ctitle
 
 
                 },
@@ -73,14 +70,16 @@
                 success: function(data){
                     
                     if (data == 'Success'){
-                        window.location = "{% url 'nomination'%}"
+                        window.location = "{% url 'enrollment'%}"
                     }
                     else{
-                        $('#message').html('The faculty has already been nominated for an award')
+                        $('#message').html('This student is already enrolled in the course or is enrolled in 3 courses already')
                     }
                 }
-            })
+            }) 
         })
+
+       
 
     })
 </script>

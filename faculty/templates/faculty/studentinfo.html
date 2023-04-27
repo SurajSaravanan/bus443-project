@@ -1,25 +1,30 @@
 {% extends 'faculty/base.html' %}
 {% block content %}
         <div class = "container-fluid bg-primary text-center text-white paddingclass">
-    <h1>Faculty Info</h1>
+    <h1>Student Info</h1>
         </div>
         <div class = "container">
         <table class = "table table-hover">
             <thead class = "bg-dark text-white">
                 <tr>
-                    <th>Faculty Id</th>
-                    <th>Faculty Name</th>
-                    <th>Faculty Age</th>
-                    <th>Research Area</th>
+                    <th>Student Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Major</th>
+                    <th>Year</th>
+                    <th>GPA</th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in data %}
                 <tr>
-                    <td>{{ row.facultyid }}</td>
-                    <td>{{ row.facultyname }}</td>
-                    <td>{{ row.facultyage }}</td>
-                    <td>{{ row.researcharea }}</td>
+                    <td>{{ row.studentid }}</td>
+                    <td>{{ row.firstname }}</td>
+                    <td>{{ row.lastname }}</td>
+                    <td>{{ row.studentmajor }}</td>
+                    <td>{{ row.studentmajor }}</td>
+                    <td>{{ row.studentyear }}</td>
+                    <td>{{ row.gpa }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
