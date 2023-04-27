@@ -1,0 +1,42 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+
+<div class = "container">
+    <br/>
+    <div class = "text-center">
+        <h4>Faculty Nominations</h4>
+    </div>
+    <div>
+        <canvas id = "mycanvas" width = "300px" height= "100px"></canvas>
+    </div>
+</div>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+
+<script>
+    var mychart = document.getElementById('mycanvas')
+    var newchart = new Chart(mychart, {
+
+        type: 'bar',
+        data: {
+            labels: ['Teaching', 'Research', 'Outreach'],
+            datasets: [{
+                label: 'Faculty Nominations',
+                data: [{{teaching}}, {{research}}, {{outreach}}],
+                backgroundColor: ['rgb(245, 87, 66, 0.8)']
+            }] 
+        },
+        options:{
+            scales: {
+                y: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+
+    })
+</script>
+
+{% endblock%}

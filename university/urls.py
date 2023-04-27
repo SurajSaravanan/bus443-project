@@ -17,10 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from faculty import views 
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("home/", views.home),
-    path("facultyinfo/", views.getfacultyinfo),
-    
+    path("home/", views.home, name = 'home'),
+    path("facultyinfo/", views.getfacultyinfo, name = 'facultyinfo'),
+    path("comment/", views.saveComment, name = 'comment'),
+    path("commentpage/", views.commentpage, name = 'commentpage'),
+    path('login/', LoginView.as_view(template_name = 'faculty/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('commentinfo/', views.commentformexample, name='commentform'),
+    path('nomination/', views.nominationinfo, name='nomination'),
+    path('saveinfo/', views.savenomination, name='saveinfo'),
+    path('dashboard/', views.chartdata, name='dashboard'),
+
+
 ]

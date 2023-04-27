@@ -1,4 +1,8 @@
 
-paddingclass{
+.paddingclass{
     padding: 50px;
+}
+
+.marginclass{
+    margin-left:auto;
 }

@@ -1,0 +1,21 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+
+<div class = "container" >
+    <br/><br/>
+    <h4>Please Enter your comment below</h4>
+    <form action="{%url 'commentform' %}" method = "post">
+        {% csrf_token %}
+        <div class = "form-group">
+        {{ form.facultyemail }}
+        </div><br/>
+        <div class = "form-group">
+            {{ form.facultycomment }}
+        </div><br/>
+        <div class = "form-group">
+            <input type = "submit" value = "Submit", class = "btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+{% endblock %}  

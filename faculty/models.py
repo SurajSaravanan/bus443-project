@@ -11,4 +11,25 @@ class FacultyInfo (models.Model):
     facultyid = models.IntegerField()
     facultyname = models.CharField(max_length = 100)
     facultyage = models.IntegerField()
-    researcharea = models.TextField()
+    researcharea = models.TextField() 
+
+
+class StudentInfo(models.Model):
+    studentid = models.IntegerField(primary_key=True)
+    firstname = models.CharField(max_length = 100)
+    lastname = models.CharField(max_length = 100)
+    studentmajor  = models.CharField(max_length = 100)
+    studentyear = models.CharField(max_length = 100)
+    gpa = models.DecimalField(max_digits = 2, decimal_places=1)
+
+class Facultycomment(models.Model):
+    facultyemail = models.CharField(max_length = 500)
+    facultycomment = models.TextField()
+
+class Award(models.Model):
+    awardtype = models.CharField(max_length = 500)
+
+class FacultyNomination(models.Model):
+    facultyname = models.CharField(max_length = 100)
+    awardtype = models.CharField(max_length = 100)
+

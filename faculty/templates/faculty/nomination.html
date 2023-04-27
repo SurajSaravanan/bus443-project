@@ -1,0 +1,88 @@
+{% extends 'faculty/base.html' %}
+{%block content%}
+
+<div class = "container">
+    <br/><br/>
+    <div class ="row">
+        <div class = "col-md text-center">
+            <select id = "faculty" class = "form-select">
+                <option value = "">Please select a name</option>
+                {%for i in faculty %}
+                <option value = "{{i.facultyname}}">{{i.facultyname}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class = "col-md text-center">
+            <select id = "award" class = "form-select">
+                <option value = "">Please select an award</option>
+                {%for i in award %}
+                <option value = "{{i.awardtype}}">{{i.awardtype}}</option>
+                {%endfor%}
+            </select>
+        </div>
+    </div><br/>
+    <div class = "text-center">
+        <button class ="btn btn-primary" id="btnsubmit">Submit</button>
+    </div><br/><br/>
+
+    <div>
+        <h4 id = 'message'></h4>
+    </div><br/>
+
+    <div class = "conatiner text-center">
+        <h4>Existing Nominations</h4>
+        <table class = "table">
+            <thead class = "text-center">
+                <tr>
+                    <th>Faculty Name</th>
+                    <th>Award Type</th>
+                </tr>
+            </thead>
+            <tbody class = "text-center">
+                {%for i in nomination%}
+                <tr>
+                    <td>{{i.facultyname}}</td>
+                    <td>{{i.awardtype}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    $('document').ready(function(){
+        $('#btnsubmit').click(function(){
+            var fname = $('#faculty').val()
+            var award = $('#award').val()
+            console.log(fname)
+            console.log(award)
+            
+
+            $.ajax({
+                url:"{% url 'saveinfo' %}",
+                data:{
+                    facultyname: fname,
+                    awardtype: award
+
+
+                },
+                
+                success: function(data){
+                    
+                    if (data == 'Success'){
+                        window.location = "{% url 'nomination'%}"
+                    }
+                    else{
+                        $('#message').html('The faculty has already been nominated for an award')
+                    }
+                }
+            })
+        })
+
+    })
+</script>
+
+{%endblock%}

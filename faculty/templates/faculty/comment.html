@@ -1,0 +1,41 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+<div class = "container">
+    <br/><br/>
+    <h4>Please Enter Your Comment</h4>
+    <div class = "form-group">
+        <label for = "emailid">Email Id</label>
+        <input type = "text" id = "emailid" class = "form-control"/>
+    </div>
+    <div class = "form-group">
+        <label for = "comment">Comment</label>
+        <input type = "text" id = "comment" class = "form-control"/>
+    </div>
+    <br/>
+    <button class = "btn btn-success" id = "btnsubmit">Submit</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    $('document').ready(function(){
+        $('#btnsubmit').click(function(){
+
+            var email = $('#emailid').val()
+            var comment = $('#comment').val()
+
+           $.ajax ({
+                url: "{%url 'comment' %}",
+                data: {
+                    useremail: email,
+                    usercomment: comment
+                },
+                success: function(){
+                    console.log('success')
+                }
+            }) 
+
+        })
+
+    })
+</script>
+{%endblock%}
