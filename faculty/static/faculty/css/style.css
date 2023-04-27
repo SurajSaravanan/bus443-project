@@ -6,3 +6,11 @@
 .marginclass{
     margin-left:auto;
 }
+
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-body {
+    font-size: 24px;
+}

@@ -59,6 +59,7 @@ def saveenrollment(request):
     
     
 #create a barchart to display number of nominations for each award type
+@login_required
 def dashboard(request):
     enrolled_students = StudentEnrollment.objects.all().count()
     avg_gpa = StudentInfo.objects.all().aggregate(Avg('gpa'))['gpa__avg']
